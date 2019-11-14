@@ -12,8 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-
-//@Profile("springdatajpa")
+@Profile("springdatajpa")
 public class VetSDJpaService implements VetService {
 
     private final VetRepository vetRepository;
