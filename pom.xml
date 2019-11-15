@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
 
     <name>sfg-pet-clinic</name>
-    <description>spring framwork guru Pet Clinic Project</description>
+    <description>spring framework guru Pet Clinic Project</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

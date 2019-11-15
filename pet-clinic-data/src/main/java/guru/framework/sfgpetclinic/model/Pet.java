@@ -26,6 +26,9 @@ public class Pet extends BaseEntity{
     public PetType getPetType() {
         return petType;
     }
+    public String name;
+
+
 
     public void setPetType(PetType petType) {
         this.petType = petType;
@@ -53,5 +56,13 @@ public class Pet extends BaseEntity{
 
     public void setVisits(Set<Visit> visits) {
         this.visits = visits;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
