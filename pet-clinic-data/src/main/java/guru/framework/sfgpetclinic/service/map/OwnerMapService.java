@@ -6,20 +6,22 @@ import guru.framework.sfgpetclinic.service.CrudService;
 import guru.framework.sfgpetclinic.service.OwnerService;
 import guru.framework.sfgpetclinic.service.PetService;
 import guru.framework.sfgpetclinic.service.PetTypeService;
-import org.springframework.context.annotation.Primary;
+
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 @Service
 @Profile({"default", "map"})
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
+public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetService petService;
     private final PetTypeService petTypeService;
 
-    public OwnerServiceMap(PetTypeService petTypeService, PetService petService) {
+    public OwnerMapService(PetTypeService petTypeService, PetService petService) {
         this.petTypeService = petTypeService;
         this.petService = petService;
     }
@@ -74,6 +76,16 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner findByLastName(String lastName) {
+        Stream<Owner> ownerStream = this.findAll().stream();
+
+        Optional<Owner> curr = ownerStream.findFirst();
+        Owner ownerCurr = curr.orElse(null);
+        System.out.println(ownerCurr.getLastName());
+//        Stream<Owner> ownerStream1 = ownerStream.filter(owner -> owner.getLastName().equalsIgnoreCase(lastName));
+//
+//        Optional<Owner> ownerOption  = ownerStream1.findFirst();
+//        Owner ownerL = ownerOption.orElse(null);
+
         return null;
     }
 }
