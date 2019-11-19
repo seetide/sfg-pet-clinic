@@ -10,7 +10,7 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 
 @Entity
 @Table(name = "owners")
@@ -23,6 +23,7 @@ public class Owner extends Person {
         this.telephone = telephone;
         this.pets = pets;
     }
+
 
 
     @Column(name = "address")

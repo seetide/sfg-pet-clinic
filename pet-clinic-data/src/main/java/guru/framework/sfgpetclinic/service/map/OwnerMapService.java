@@ -2,7 +2,6 @@ package guru.framework.sfgpetclinic.service.map;
 
 import guru.framework.sfgpetclinic.model.Owner;
 import guru.framework.sfgpetclinic.model.Pet;
-import guru.framework.sfgpetclinic.service.CrudService;
 import guru.framework.sfgpetclinic.service.OwnerService;
 import guru.framework.sfgpetclinic.service.PetService;
 import guru.framework.sfgpetclinic.service.PetTypeService;
@@ -76,16 +75,10 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner findByLastName(String lastName) {
-        Stream<Owner> ownerStream = this.findAll().stream();
-
-        Optional<Owner> curr = ownerStream.findFirst();
-        Owner ownerCurr = curr.orElse(null);
-        System.out.println(ownerCurr.getLastName());
-//        Stream<Owner> ownerStream1 = ownerStream.filter(owner -> owner.getLastName().equalsIgnoreCase(lastName));
-//
-//        Optional<Owner> ownerOption  = ownerStream1.findFirst();
-//        Owner ownerL = ownerOption.orElse(null);
-
-        return null;
+        return this.findAll()
+                .stream()
+                .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
+                .findFirst()
+                .orElse(null);
     }
 }
