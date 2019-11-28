@@ -15,7 +15,6 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @MappedSuperclass
 public class BaseEntity implements Serializable {
 
@@ -23,4 +22,7 @@ public class BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public boolean isNew() {
+        return this.id == null;
+    }
 }

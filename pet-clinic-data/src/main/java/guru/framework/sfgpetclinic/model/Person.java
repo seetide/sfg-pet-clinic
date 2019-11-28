@@ -1,6 +1,9 @@
 package guru.framework.sfgpetclinic.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -24,11 +27,4 @@ public class Person extends BaseEntity {
     @Column(name = "last_name")
     private String lastName;
 
-//    public Person(Long id) {
-//        super(id);
-//    }
-//
-//    public Person(String lastName){
-//        this.lastName = lastName;
-//    }
 }

@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 @Entity
 @Table(name = "specialties")
 public class Specialty extends BaseEntity{

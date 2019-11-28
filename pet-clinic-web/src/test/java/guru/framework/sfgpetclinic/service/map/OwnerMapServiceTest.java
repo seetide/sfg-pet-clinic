@@ -6,29 +6,23 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class OwnerMapServiceTest {
 
     OwnerMapService ownerMapService;
     final Long ownerId = 1L;
-
     final String lastName = "Smith";
 
     @BeforeEach
     void setUp() {
         ownerMapService = new OwnerMapService(new PetTypeMapService(), new PetMapService());
-
         ownerMapService.save(Owner.builder().id(ownerId).lastName(lastName).build());
+
     }
 
-    @Test
-    void findByLastName() {
-        Owner smith = ownerMapService.findByLastName(lastName);
-        System.out.println("current owner is " +smith);
-        assertNotNull(smith);
-        assertEquals(ownerId, smith.getId());
-    }
+
 
     @Test
     void findAll() {
@@ -76,5 +70,17 @@ class OwnerMapServiceTest {
         assertEquals(ownerId, owner.getId());
     }
 
+    @Test
+    void findByLastName() {
+        Owner smith = ownerMapService.findByLastName(lastName);
+        //System.out.println("current owner is " +smith);
+
+        Owner[] owners = new Owner[1];
+        ownerMapService.findAll().toArray(owners);
+        System.out.println(owners[0].getLastName());
+
+        assertNotNull(smith);
+        assertEquals(ownerId, smith.getId());
+    }
 
 }

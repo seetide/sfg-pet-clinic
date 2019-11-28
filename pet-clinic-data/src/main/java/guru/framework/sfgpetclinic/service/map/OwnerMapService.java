@@ -2,17 +2,14 @@ package guru.framework.sfgpetclinic.service.map;
 
 import guru.framework.sfgpetclinic.model.Owner;
 import guru.framework.sfgpetclinic.model.Pet;
-import guru.framework.sfgpetclinic.service.CrudService;
 import guru.framework.sfgpetclinic.service.OwnerService;
 import guru.framework.sfgpetclinic.service.PetService;
 import guru.framework.sfgpetclinic.service.PetTypeService;
-
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
-import java.util.stream.Stream;
 
 @Service
 @Profile({"default", "map"})
@@ -76,16 +73,15 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner findByLastName(String lastName) {
-        Stream<Owner> ownerStream = this.findAll().stream();
+        return this.findAll()
+                .stream()
+                .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
+                .findFirst()
+                .orElse(null);
+    }
 
-        Optional<Owner> curr = ownerStream.findFirst();
-        Owner ownerCurr = curr.orElse(null);
-        System.out.println(ownerCurr.getLastName());
-//        Stream<Owner> ownerStream1 = ownerStream.filter(owner -> owner.getLastName().equalsIgnoreCase(lastName));
-//
-//        Optional<Owner> ownerOption  = ownerStream1.findFirst();
-//        Owner ownerL = ownerOption.orElse(null);
-
+    @Override
+    public List<Owner> findAllByLastNameLike(String s) {
         return null;
     }
 }
