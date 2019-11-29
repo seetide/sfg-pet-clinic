@@ -63,12 +63,7 @@ public class OwnerController {
         }
     }
 
-    @GetMapping("/{ownerId}")
-    public ModelAndView showOwner(@PathVariable Long ownerId) {
-        ModelAndView mav = new ModelAndView("owners/ownerDetails");
-        mav.addObject(ownerService.findById(ownerId));
-        return mav;
-    }
+
 
     @GetMapping("/new")
     public String initCreationForm(Model model) {
@@ -101,6 +96,13 @@ public class OwnerController {
             Owner savedOwner = ownerService.save(owner);
             return "redirect:/owners/" + savedOwner.getId();
         }
+    }
+
+    @GetMapping("/{ownerId}")
+    public ModelAndView showOwner(@PathVariable("ownerId") Long ownerId) {
+        ModelAndView mav = new ModelAndView("owners/ownerDetails");
+        mav.addObject(ownerService.findById(ownerId));
+        return mav;
     }
 
 }
