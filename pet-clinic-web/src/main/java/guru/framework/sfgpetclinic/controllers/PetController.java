@@ -43,18 +43,18 @@ public class PetController {
         dataBinder.setDisallowedFields("id");
     }
 
-    @InitBinder("pet")
-    public void initPetBinder(WebDataBinder dataBinder){
-        dataBinder.setValidator(new PetValidator());
-    }
-
-    @GetMapping("/pets/new")
-    public String initCreationForm(Owner owner, Model model){
-        Pet pet = new Pet();
-        owner.addPet(pet);
-        model.addAttribute("pet", pet);
-        return VIEWS_PETS_CREATED_OR_UPDATE_FORM;
-    }
+//    @InitBinder("pet")
+//    public void initPetBinder(WebDataBinder dataBinder){
+//        dataBinder.setValidator(new PetValidator());
+//    }
+//
+//    @GetMapping("/pets/new")
+//    public String initCreationForm(Owner owner, Model model){
+//        Pet pet = new Pet();
+//        owner.addPet(pet);
+//        model.addAttribute("pet", pet);
+//        return VIEWS_PETS_CREATED_OR_UPDATE_FORM;
+//    }
 
 
 }
