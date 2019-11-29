@@ -18,7 +18,8 @@ import java.util.Set;
 public class Owner extends Person {
 
     @Builder
-    public Owner(Long id, String firstName, String lastName, String address, String city, String telephone, Set<Pet> pets) {
+    public Owner(Long id, String firstName, String lastName, String address, String city,
+                 String telephone, Set<Pet> pets) {
         super(id, firstName, lastName);
         this.address = address;
         this.city = city;
@@ -51,6 +52,10 @@ public class Owner extends Person {
         for(Pet pet : pets){
             if(!ignoreNew || !pet.isNew()){
                 String compName = pet.getName();
+                compName = compName.toLowerCase();
+                if(compName.equals(name)){
+                    return pet;
+                }
             }
         }
 
